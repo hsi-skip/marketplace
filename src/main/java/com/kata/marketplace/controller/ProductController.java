@@ -48,16 +48,16 @@ public class ProductController {
     @PostMapping("/add")
     public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto) {
         logger.debug("Requested to get add product [{}] ", productDto);
-        try{
+//        try{
             productService.save(productDto);
             return new ResponseEntity<>("Product saved successfully", HttpStatus.OK);
-        }catch (IllegalArgumentException e){
-            logger.error("IllegalArgumentException: {}", e);
-            return new ResponseEntity<>("Bad request, product not added", HttpStatus.BAD_REQUEST);
-        }catch (Exception e){
-            logger.error("Exception: {}", e);
-            return new ResponseEntity<>("Internal server error, product not added", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+//        }catch (IllegalArgumentException e){
+//            logger.error("IllegalArgumentException: {}", e);
+//            return new ResponseEntity<>("Bad request, product not added", HttpStatus.BAD_REQUEST);
+//        }catch (Exception e){
+//            logger.error("Exception: {}", e);
+//            return new ResponseEntity<>("Internal server error, product not added", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
     }
 
     @PutMapping("/update")
