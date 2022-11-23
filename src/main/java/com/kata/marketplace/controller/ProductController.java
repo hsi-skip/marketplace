@@ -26,17 +26,13 @@ public class ProductController {
 
     @GetMapping("/all")
     public ResponseEntity getAll() {
+        logger.debug("Requested to get all products");
+        List<ProductDto> productsDto = productService.getAll();
 
-        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
-
-//        logger.debug("Requested to get all products");
-//        List<ProductDto> productsDto = productService.getAll();
-//
-//        if (productsDto.isEmpty())
-//            return new ResponseEntity<>("No record found", HttpStatus.NOT_FOUND);
-//         else
-//            return new ResponseEntity<>(productsDto, HttpStatus.OK);
-
+        if (productsDto.isEmpty())
+            return new ResponseEntity<>("No record found", HttpStatus.NOT_FOUND);
+         else
+            return new ResponseEntity<>(productsDto, HttpStatus.OK);
     }
 
     @GetMapping("/get-one/{id}")
